@@ -28,6 +28,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+    
 }
 
 dependencies {
@@ -40,16 +47,17 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-afterEvaluate {
-    publishing {
-        publications{
-            maven(MavenPublication){
-                from components.release
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.github.manikandanvgts'
+            artifactId = 'sampleandoridpulgin'
+            version = '1.0.4'
 
-                groupId = 'com.github.manikandanvgts'
-                artifactId = 'sampleandoridpulgin'
-                version '1.0.3'
+            afterEvaluate {
+                from components.release
             }
         }
     }
 }
+
