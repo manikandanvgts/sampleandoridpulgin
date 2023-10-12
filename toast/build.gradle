@@ -43,12 +43,12 @@ dependencies {
 afterEvaluate {
     publishing {
         publications{
-            release(MavenPublication){
+            maven(MavenPublication){
                 from components.release
 
                 groupId = 'com.github.manikandanvgts'
                 artifactId = 'sampleandoridpulgin'
-                version '1.0.1'
+                version '1.0.3'
             }
         }
     }
